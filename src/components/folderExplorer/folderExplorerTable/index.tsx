@@ -7,9 +7,12 @@ const FolderExplorerTable  = ({folders, currentFolderId, setCurrentFolderId}) =>
     {folders.filter(folder=>folder.parentId===currentFolderId).map((entity)=>(
         <tr key={entity.id} onClick={()=>setCurrentFolderId(entity.id)}>
             {/* Here I can add another component called Icon */}
-           <td style={styles.firstColumn}><span><img src={folder} alt="folder"></img></span>{entity.displayName}</td> 
-           <td style={styles.secondColumn}>{entity.lastUpdated.updatedAt}</td>
-           <td style={styles.thirdColumn}>{entity.lastUpdated.updatedBy}</td> 
+            <td style={styles.firstColumn}>
+                <span><img src={folder} alt="folder" style={styles.folderIcon}></img></span>
+                    {entity.displayName}
+                </td> 
+            <td style={styles.secondColumn}>{entity.lastUpdated.updatedAt}</td>
+            <td style={styles.thirdColumn}>{entity.lastUpdated.updatedBy}</td> 
         </tr>
     ))}
 
@@ -32,6 +35,9 @@ let styles = {
     thirdColumn: {
         width:'30%'
     },
+    folderIcon: {
+        paddingRight: '5px'
+    }
     }
     
 export default FolderExplorerTable;
